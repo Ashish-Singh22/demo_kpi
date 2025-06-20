@@ -8,7 +8,7 @@ const SummaryApi = {
     method: "post",
   },
   workerPackingUpload: {
-    url: `${backendDomain}/api/worker-packing`,
+    url: `${backendDomain}/api/workerPackingUpload`,
     method: "post",
   },
   dpmoUpload: {
@@ -16,11 +16,11 @@ const SummaryApi = {
     method: "post",
   },
   dnShipmentUpload: {
-    url: `${backendDomain}/api/dn-shipment`,
+    url: `${backendDomain}/api/shipment-upload`,
     method: "post",
   },
   dnProductivityUpload: {
-    url: `${backendDomain}/api/dn-productivity`,
+    url: `${backendDomain}/api/productivity-upload`,
     method: "post",
   },
   fsfFafUpload: {
@@ -29,6 +29,18 @@ const SummaryApi = {
   },
   findPicker: {
     url: `${backendDomain}/api/find-picker`,
+    method: "post",
+  },
+  findPacker: {
+    url: `${backendDomain}/api/find-packer`,
+    method: "post",
+  },
+  findShipment: {
+    url: `${backendDomain}/api/find-shipment`,
+    method: "post",
+  },  
+  findProductivity: {
+    url: `${backendDomain}/api/find-productivity`,
     method: "post",
   },
 };

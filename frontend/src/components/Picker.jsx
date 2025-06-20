@@ -34,42 +34,43 @@ const Picker = () => {
 
     setCurrentFilters(updatedFilters);
 
-    // 1. Fetch Picker Data
-    const response = await fetch(SummaryApi.findPicker.url, {
-      method: SummaryApi.findPicker.method,
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedFilters),
-    });
+    // // 1. Fetch Picker Data
+    // const response = await fetch(SummaryApi.findPicker.url, {
+    //   method: SummaryApi.findPicker.method,
+    //   credentials: "include",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(updatedFilters),
+    // });
 
-    const dataResponse = await response.json();
-    if (dataResponse.success) {
-      setPickerData(dataResponse.data);
+    // const dataResponse = await response.json();
+    // if (dataResponse.success) {
+    //   setPickerData(dataResponse.data);
 
-      // 2. Fetch Excel File (Python response)
-      const pythonResponse = await fetch(SummaryApiPython.filterWorkerController.url, {
-        method: SummaryApiPython.filterWorkerController.method,
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          pickerData: pickerData, // use the latest fetched picker data
-          filterData: updatedFilters,
-        }),
-      });
+    //   // 2. Fetch Excel File (Python response)
+    //   const pythonResponse = await fetch(SummaryApiPython.filterWorkerController.url, {
+    //     method: SummaryApiPython.filterWorkerController.method,
+    //     credentials: "include",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({
+    //       name: "Picker", // Specify the worker type
+    //       pickerData: pickerData, // use the latest fetched picker data
+    //       filterData: updatedFilters,
+    //     }),
+    //   });
 
-      if (pythonResponse.ok) {
-        const blob = await pythonResponse.blob();
-        const fileURL = URL.createObjectURL(blob);
-        setExcelFile(fileURL);
-        console.log("📦 Excel file received and set");
-      } else {
-        const error = await pythonResponse.json();
-        console.error("❌ Python API error:", error.message);
-      }
+    //   if (pythonResponse.ok) {
+    //     const blob = await pythonResponse.blob();
+    //     const fileURL = URL.createObjectURL(blob);
+    //     setExcelFile(fileURL);
+    //     console.log("📦 Excel file received and set");
+    //   } else {
+    //     const error = await pythonResponse.json();
+    //     console.error("❌ Python API error:", error.message);
+    //   }
 
-    } else if (dataResponse.error) {
-      console.error("❌ Error fetching picker data:", dataResponse.message);
-    }
+    // } else if (dataResponse.error) {
+    //   console.error("❌ Error fetching picker data:", dataResponse.message);
+    // }
   };
 
   return (
@@ -83,6 +84,7 @@ const Picker = () => {
       {excelFile && (
       <WorkerPerformancePlotly excelFile={excelFile} />  // ✅ Proper JSX conditional
      )}
+     
       
     </>
   );

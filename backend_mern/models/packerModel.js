@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const LoadDataSchema = new mongoose.Schema({}, { strict: false }); // Accepts dynamic DataFrame structure
 
 
-const pickerSchema = mongoose.Schema({
+const packerSchema = mongoose.Schema({
    "date": { type: String, required: true },
    "shift": { type: Number, required: true },
    "count_basis": { type: String },
@@ -15,6 +15,6 @@ const pickerSchema = mongoose.Schema({
     timestamps : true
 })
 
-const pickerModel = mongoose.model("picker",pickerSchema)
+const packerModel = mongoose.model("packer",packerSchema)
 
-module.exports = pickerModel
+module.exports = packerModel

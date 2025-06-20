@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime
 from flask import send_file
 
-def process_worker_file(picker_data, filter_data):
+def process_worker_file(name,uploaded_data, filter_data):
     try:      
         selectionData = filter_data
 
@@ -22,7 +22,7 @@ def process_worker_file(picker_data, filter_data):
 
         data = []
 
-        for record in picker_data:
+        for record in uploaded_data:
             entry = {
                 "date": datetime.strptime(record["date"], "%Y-%m-%d"),  # Convert string to datetime
                 "shift": record["shift"],
@@ -124,14 +124,22 @@ def process_worker_file(picker_data, filter_data):
 
         # Final DataFrame construction
         send_data = pd.DataFrame(columns=['Employee'] + sorted(all_cols))
-
-        for employee, hour_data in final_data.items():
-            row = {'Employee': employee}
-            for col in all_cols:
-                row[col] = hour_data.get(col, 0)
-            send_data = pd.concat([send_data, pd.DataFrame([row])], ignore_index=True)
-
-        print(send_data)
+        
+        if'workerName' in selectionData:
+            for employee, hour_data in final_data.items():
+                if selectionData['workerName'] != employee:
+                    continue
+                row = {'Employee': employee}
+                for col in all_cols:
+                    row[col] = hour_data.get(col, 0)
+                send_data = pd.concat([send_data, pd.DataFrame([row])], ignore_index=True)
+        else:
+            for employee, hour_data in final_data.items():
+                row = {'Employee': employee}
+                for col in all_cols:
+                    row[col] = hour_data.get(col, 0)
+                send_data = pd.concat([send_data, pd.DataFrame([row])], ignore_index=True)
+        # print(send_data)
 
 
         send_data.to_excel("send_data.xlsx", index=False)

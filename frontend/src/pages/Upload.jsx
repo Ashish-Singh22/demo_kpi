@@ -130,6 +130,7 @@ const UploadPage = () => {
       const dataResponse = await response.json();
 
       if (dataResponse.success) {
+        console.log(dataResponse)
         toast.success(dataResponse?.message || "Upload successful");
 
         //For Saving Data to MERN Database

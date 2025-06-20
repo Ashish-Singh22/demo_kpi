@@ -9,15 +9,26 @@ def calculate_filterWorkerController():
         payload = request.get_json()
         if not payload:
             return jsonify({'success': False, 'message': 'No JSON body received'}), 400
-
-        picker_data = payload.get('pickerData', [])
+        name = payload.get('name',"no_name")
         filter_data = payload.get('filterData', {})
+        
+        if name == "Picker":
+            picker_data = payload.get('pickerData', [])
+            if not picker_data:                
+                return jsonify({'success': False, 'message': 'Missing picker data'}), 400
+            result = process_worker_file(name,packer_data, filter_data)
+        elif name == "Packe":
+            packer_data = payload.get('packerData', {})
+            if not packer_data:                
+                return jsonify({'success': False, 'message': 'Missing packer data'}), 400
+            result = process_worker_file(name,picker_data, filter_data)
+       
+        
 
-        if not picker_data:
-            return jsonify({'success': False, 'message': 'Missing picker data'}), 400
+
 
         # Now you can use both picker_data and filter_data
-        result = process_worker_file(picker_data, filter_data)  # update your function if needed
+          # update your function if needed
 
         return send_file("send_data.xlsx", as_attachment=True)
 

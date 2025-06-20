@@ -10,19 +10,19 @@ const SummaryApiPython = {
     method: "post",
   },
   workerPackingUpload: {
-    url: `${backendDomain}/api/upload/worker-packing`,
+    url: `${backendDomain}/api/worker-packing`,
     method: "post",
   },
   dpmoUpload: {
-    url: `${backendDomain}/api/upload/dpmo`,
+    url: `${backendDomain}/api/dpmo`,
     method: "post",
   },
   dnShipmentUpload: {
-    url: `${backendDomain}/api/upload/dn-shipment`,
+    url: `${backendDomain}/api/dn-shipment`,
     method: "post",
   },
   dnProductivityUpload: {
-    url: `${backendDomain}/api/upload/dn-productivity`,
+    url: `${backendDomain}/api/dn-productivity`,
     method: "post",
   },
   fsfFafUpload: {
