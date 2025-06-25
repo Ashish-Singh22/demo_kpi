@@ -7,6 +7,7 @@ from api.workerPackingUpload import workerPackingUpload_bp
 from api.dnShipmentController import dnShipmentController_bp
 from api.dnProductivityController import dnProductivityController_bp
 from api.dpmoController import dpmoController_bp
+from api.uploadInventoryController import uploadInventoryController_bp
 
 app = Flask(__name__)
 
@@ -30,6 +31,8 @@ app.register_blueprint(dnShipmentController_bp, url_prefix='/api')
 app.register_blueprint(dnProductivityController_bp, url_prefix='/api')
 #dpmo
 app.register_blueprint(dpmoController_bp, url_prefix='/api')
+#inventory
+app.register_blueprint(uploadInventoryController_bp, url_prefix='/api')
 
 if __name__ == '__main__':
     app.run(debug=True)

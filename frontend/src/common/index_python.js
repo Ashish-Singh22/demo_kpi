@@ -33,6 +33,10 @@ const SummaryApiPython = {
     url: `${backendDomain}/api/filter-worker`,
     method: "post",
   },
+  uploadInventoryController: {
+    url: `${backendDomain}/api/upload-inventory`,
+    method: "post",
+  },
 };
 
 export default SummaryApiPython;

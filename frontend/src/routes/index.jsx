@@ -4,10 +4,10 @@ import App from "../App";
 import Home from "../pages/Home";
 import Dn from "../pages/Dn";
 import Dpmo from "../pages/Dpmo";
-import Fsf_and_Faf from "../pages/Fsf_and_Faf";
 import { Upload } from "lucide-react";
 import Worker from "../pages/Worker";
 import UploadPage from "../pages/Upload";
+import Inventory from "../pages/Inventory";
 
 const router = createBrowserRouter([
     {
@@ -27,8 +27,8 @@ const router = createBrowserRouter([
                 element: <Dpmo/>
             },
             {
-                path: "/fsf_and_faf",
-                element: <Fsf_and_Faf/>
+                path: "/inventory",
+                element: <Inventory/>
             },
             {
                 path: "/worker",

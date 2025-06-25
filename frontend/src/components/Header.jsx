@@ -14,7 +14,7 @@ const Header = () => {
     { name: 'Worker', href: '/worker' },
     { name: 'DN', href: '/dn' },
     { name: 'DPMO', href: '/dpmo' },
-    { name: 'FSF/FAF', href: '/fsf_and_faf' }
+    { name: 'Inventory', href: '/inventory' }
   ];
 
   return (
